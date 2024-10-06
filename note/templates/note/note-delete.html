@@ -1,0 +1,21 @@
+{% extends 'note/base.html' %}
+
+{% block title %}
+  Confirm delete {{ object.pk }}
+{% endblock %}
+
+{% block body %}
+  <h1>Are you sure you want to delete "{{ object.head }}"?</h1>
+  <br>
+  <div>
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Delete</button>
+    </form>
+  </div>
+  <br>
+  <div>
+    <p><a href="{% url 'note:note_details' pk=object.pk %}">Back to "{{ object.head }}"</a></p>
+  </div>
+{% endblock %}

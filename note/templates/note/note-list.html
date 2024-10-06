@@ -1,0 +1,27 @@
+{% extends 'note/base.html' %}
+
+{% block title %}
+  Notes
+{% endblock %}
+
+{% block body %}
+    <h1>Notes:</h1>
+    {% if message %}
+        <div>
+            {% for n in message %}
+                <div>
+                    <p><a href="{% url 'note:note_details' pk=n.pk %}"><h2>{{ n.head }}</h2></a></p>
+                    <p><em>{{ n.memo }}</em></p>
+                    <br>
+                    <p>Published at: {{ n.published_at }}</p>
+
+                    <hr>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <h3>No notes yet</h3>
+    {% endif %}
+
+    <a href="{% url 'note:note_create' %}">Create note</a>
+{% endblock %}

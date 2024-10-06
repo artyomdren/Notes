@@ -1,0 +1,33 @@
+{% extends 'note/base.html' %}
+
+{% block title %}
+  Note #{{ message.pk }}
+{% endblock %}
+
+{% block body %}
+  <h1><strong>{{ message.head }}</strong></h1>
+  <div>
+    <div><em>{{ message.memo }}</em></div>
+    <br>
+    <div>{{ message.published_at }}</div>
+
+    </div>
+  </div>
+<br>
+<hr>
+  <div>
+    <a href="{% url 'note:note_update' pk=message.pk %}">Update product</a>
+  </div>
+<br>
+  <div>
+    <a href="{% url 'note:note_delete' pk=message.pk %}">Delete product</a>
+  </div>
+<br>
+  <div>
+    <a href="{% url 'note:notice' %}">Back to note list</a>
+  </div>
+<br>
+<div>
+      <a href="{% url 'note:note_create' %}">Create note</a>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'note/base.html' %}
+
+{% block title %}
+  Update note
+{% endblock %}
+
+{% block body %}
+  <h1>Update note</h1>
+  <div>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Update</button>
+    </form>
+  </div>
+  <div>
+  <p><a href="{% url 'note:note_details' pk=object.pk %}">Back to "{{ object.head }}"</a></p>
+  </div>
+{% endblock %}
